@@ -1,0 +1,54 @@
+# Anime Tracker 配置模板（示例文件，请复制为 config.yaml 并修改）
+# ================================================================
+# ⚠️ 敏感信息（密码/Token）走环境变量，不写在此文件中
+#    参考 .env 文件设置环境变量
+# ================================================================
+anime_tracker:
+  # 分辨率偏好
+  resolution: "1080p"
+
+  # 字幕组优先级（按顺序匹配）
+  sub_group_priority:
+    - "LoliHouse"
+    - "桜都字幕组"
+    - "澄空学园"
+    - "动漫国"
+  notify_on_sub_fallback: true
+
+  # qBittorrent 配置
+  qbittorrent:
+    url: "http://__QB_HOST__:__QB_PORT__"
+    username: "admin"
+    # 密码通过环境变量 QB_PASSWORD 传入
+
+  # TMM 配置
+  tmm:
+    api_url: "http://__TMM_HOST__:__TMM_PORT__"
+    # api_key 通过环境变量 TMM_API_KEY 传入
+
+  # 目录配置
+  directories:
+    temp: "/volume1/Temp"                     # 临时下载目录
+    anime: "/volume1/Video/已归档/Anime"      # 最终存储目录
+
+  # 做种管理
+  seeding:
+    min_ratio: 2.0
+    min_seeding_time_hours: 24                # 24 小时
+
+  # 定时任务
+  schedule:
+    search_interval_minutes: 60
+    daily_report_time: "20:00"
+    seed_check_interval_minutes: 720
+    download_monitor_interval_minutes: 10
+
+  # 通知 — Server酱
+  notification:
+    server_chan:
+      sendkey: ""                             # 通过环境变量 SERVERCHAN_SENDKEY 传入
+
+  # Bangumi API
+  bangumi:
+    api_base: "https://api.bangumi.tv"
+    user_agent: "AnimeTracker/1.0 (https://github.com/anime-tracker)"

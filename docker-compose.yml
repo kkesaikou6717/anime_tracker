@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  anime-tracker:
+    build: .
+    image: lain6717/anime_tracker:v3.0
+    container_name: anime-tracker
+    restart: unless-stopped
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data
+      - /volume1/Temp:/volume1/Temp:rw
+      - /volume1/Video/已归档/Anime:/volume1/Video/已归档/Anime:rw
+    environment:
+      - TZ=Asia/Shanghai
+      - QB_PASSWORD=${QB_PASSWORD}
+      - TMM_API_KEY=${TMM_API_KEY}
+      - SERVERCHAN_SENDKEY=${SERVERCHAN_SENDKEY}
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - anime-net
+
+networks:
+  anime-net:
+    driver: bridge

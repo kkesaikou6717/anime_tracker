@@ -1,0 +1,19 @@
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# HTTP client (async)
+httpx==0.28.1
+
+# Task scheduling
+APScheduler==3.10.4
+
+# YAML config
+PyYAML==6.0.2
+
+# HTML parsing (DMHY search)
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# Date/Time
+python-dateutil==2.9.0
